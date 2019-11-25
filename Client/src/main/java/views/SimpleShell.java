@@ -1,15 +1,15 @@
 package views;
 
+import controllers.IdController;
+import controllers.MessageController;
+import youareell.YouAreEll;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import controllers.IdController;
-import controllers.MessageController;
-import youareell.YouAreEll;
 
 // Simple Shell is a Console view for youareell.YouAreEll.
 public class SimpleShell {
