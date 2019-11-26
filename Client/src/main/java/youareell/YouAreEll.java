@@ -2,10 +2,17 @@ package youareell;
 
 import controllers.*;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class YouAreEll {
 
     private MessageController msgCtrl;
     private IdController idCtrl;
+
+    private static HttpURLConnection connection;
 
     public YouAreEll (MessageController m, IdController j) {
         // used j because i seems awkward
@@ -29,6 +36,25 @@ public class YouAreEll {
     }
 
     public String MakeURLCall(String mainurl, String method, String jpayload) {
+
+        try {
+            URL url = new URL("http://zipcode.rocks:8085" + mainurl);
+            connection = (HttpURLConnection) url.openConnection();
+
+            //setup our request
+            connection.setRequestMethod(method);
+            connection.setConnectTimeout(5000); // 5 seconds
+            connection.setReadTimeout(5000);
+
+            // see if connection successsful
+            int status = connection.getResponseCode();
+            //System.out.println(status);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "nada";
     }
 }
